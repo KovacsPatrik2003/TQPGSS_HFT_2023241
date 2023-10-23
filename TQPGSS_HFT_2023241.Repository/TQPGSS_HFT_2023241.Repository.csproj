@@ -5,20 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="F1Database.mdf" />
-    <None Remove="F1Database_log.ldf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="F1Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="F1Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TQPGSS_HFT_2023241.Models\TQPGSS_HFT_2023241.Models.csproj" />
   </ItemGroup>
 	<ItemGroup>

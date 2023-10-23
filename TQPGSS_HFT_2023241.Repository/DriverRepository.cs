@@ -8,9 +8,9 @@ using TQPGSS_HFT_2023241.Models;
 
 namespace TQPGSS_HFT_2023241.Repository
 {
-    public class DriveRepository : Repository<Driver>, IRepository<Driver>
+    public class DriverRepository : Repository<Driver>, IRepository<Driver>
     {
-        public DriveRepository(F1DbContext ctx) : base(ctx)
+        public DriverRepository(F1DbContext ctx) : base(ctx)
         {
         }
 

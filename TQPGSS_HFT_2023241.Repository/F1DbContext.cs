@@ -22,12 +22,12 @@ namespace TQPGSS_HFT_2023241.Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\F1Database.mdf;Integrated Security=True";
+                //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\F1Database.mdf;Integrated Security=True";
 
-                optionsBuilder.UseSqlServer(conn).UseLazyLoadingProxies();
-                //optionsBuilder
-                //    .UseLazyLoadingProxies()
-                //    .UseInMemoryDatabase("F1");
+                //optionsBuilder.UseSqlServer(conn).UseLazyLoadingProxies();
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseInMemoryDatabase("F1");
 
             }
         }
