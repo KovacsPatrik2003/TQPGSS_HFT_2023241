@@ -44,5 +44,11 @@ namespace TQPGSS_HFT_2023241.Logic
                      select s.Name;
         }
 
+        public IEnumerable avaragePointsPerGrandPrix(IRepository<GrandPrix> g)
+        {
+            return from x in repo.ReadAll()
+                   let numberOfGrandPrixes = g.ReadAll().Select(x => x.Id).Count()
+                   select Math.Round(((double)x.Points / numberOfGrandPrixes), 2);
+        }
     }
 }

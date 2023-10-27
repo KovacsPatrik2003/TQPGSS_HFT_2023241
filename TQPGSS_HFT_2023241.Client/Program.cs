@@ -34,6 +34,12 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
+            var q3 = teamLogic.avaragePointsPerGrandPrix(GrandPrixRepo);
+            foreach (var item in q3)
+            {
+                Console.WriteLine(item);
+            }
+
         }
     }
 }

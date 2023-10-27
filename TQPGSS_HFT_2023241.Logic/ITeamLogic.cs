@@ -13,5 +13,6 @@ namespace TQPGSS_HFT_2023241.Logic
         IQueryable<Team> ReadAll();
         void Update(Team item);
         IEnumerable teamsDrivers(string teamName, IRepository<Driver> d);
+        IEnumerable avaragePointsPerGrandPrix(IRepository<GrandPrix> g);
     }
 }
