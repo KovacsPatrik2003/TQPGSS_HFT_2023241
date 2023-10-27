@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using TQPGSS_HFT_2023241.Models;
+using TQPGSS_HFT_2023241.Repository;
 
 namespace TQPGSS_HFT_2023241.Logic
 {
@@ -10,5 +12,6 @@ namespace TQPGSS_HFT_2023241.Logic
         Team Read(int id);
         IQueryable<Team> ReadAll();
         void Update(Team item);
+        IEnumerable teamsDrivers(string teamName, IRepository<Driver> d);
     }
 }

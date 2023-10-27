@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,13 @@ namespace TQPGSS_HFT_2023241.Logic
         {
             this.repo.Update(item);
         }
+        public IEnumerable teamsDrivers(string teamName, IRepository<Driver> d)
+        {
+            return from s in d.ReadAll()
+                     let team = repo.ReadAll().Where(x => x.Name == teamName).Select(x => x.Id).First()
+                     where team == s.TeamId
+                     select s.Name;
+        }
+
     }
 }

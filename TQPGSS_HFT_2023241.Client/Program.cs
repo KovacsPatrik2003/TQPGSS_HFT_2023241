@@ -11,18 +11,14 @@ namespace TQPGSS_HFT_2023241.Client
         static void Main(string[] args)
         {
             F1DbContext ctx = new F1DbContext();
-            var repo = new DriverRepository(ctx);
-            var driverlogic=new DriverLogic(repo);
-            Driver a=new Driver()
-            {
-                Id=100,
-                Name="Nikita Mazepin",
-                Points=0,
-                TeamId=ctx.Teams.Where(x=>x.Name=="Haas Ferrari").Select(x=>x.Id).First()
-            };
-            driverlogic.Create(a);
-            var q1 = ctx.Drivers.Select(x => x.Name);
-            
+            var DriverRepo = new DriverRepository(ctx);
+            var TeamRepo=new TeamRepository(ctx);
+            var driverlogic=new DriverLogic(DriverRepo);
+            var teamLogic = new TeamLogic(TeamRepo);
+
+            Console.Write("Enter the name of the team you want to get the drivers for: ");
+            string teamName=Console.ReadLine();
+            var q1 = teamLogic.teamsDrivers(teamName, DriverRepo);
             foreach (var item in q1)
             {
                 Console.WriteLine(item);
