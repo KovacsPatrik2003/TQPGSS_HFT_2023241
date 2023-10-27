@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Runtime.Versioning;
 using TQPGSS_HFT_2023241.Models;
@@ -21,6 +22,7 @@ namespace TQPGSS_HFT_2023241.Logic
         {
             this.repo.Delete(id);
         }
+
         public Driver Read(int id)
         {
             return this.repo.Read(id);
@@ -32,6 +34,15 @@ namespace TQPGSS_HFT_2023241.Logic
         public void Update(Driver item)
         {
             this.repo.Update(item);
+        }
+
+        public IEnumerable driverWins(string name, IRepository<GrandPrix> g)
+        {
+            return from a in g.ReadAll()
+                     let winner = a.WhoWon
+                     let driver = repo.ReadAll().Where(x => x.Name == name).Select(x => x.Id).First()
+                     where driver == winner
+                     select a.Name;
         }
     }
 }
