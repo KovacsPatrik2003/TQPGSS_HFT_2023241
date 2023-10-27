@@ -50,5 +50,24 @@ namespace TQPGSS_HFT_2023241.Logic
                    let numberOfGrandPrixes = g.ReadAll().Select(x => x.Id).Count()
                    select Math.Round(((double)x.Points / numberOfGrandPrixes), 2);
         }
+
+        public IEnumerable firstAndSecondDriverByPoints(IRepository<Driver> d)
+        {
+            return from m in repo.ReadAll()
+                   let driver1 = m.Driver1
+                   let driver2 = m.Driver2
+                   let driver1Points = d.ReadAll().Where(x => x.Id == driver1).Select(x => x.Points).First()
+                   let driver2Points = d.ReadAll().Where(x => x.Id == driver2).Select(x => x.Points).First()
+                   select new
+                   {
+                       team = m.Name,
+                       Driver1 = driver1,
+                       Driver2 = driver2,
+                       Driver1Points = driver1Points,
+                       Driver2Points = driver2Points,
+                       first = driver1Points > driver2Points ? driver1 : driver2,
+                       second = driver2Points < driver1Points ? driver2 : driver1
+                   };
+        }
     }
 }
