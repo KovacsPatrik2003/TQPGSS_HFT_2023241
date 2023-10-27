@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,15 @@ namespace TQPGSS_HFT_2023241.Logic
         public void Update(GrandPrix item)
         {
             this.repo.Update(item);
+        }
+
+        public IEnumerable winnerOfTheCircuit(string name, IRepository<Driver> d)
+        {
+            return from x in repo.ReadAll()
+                   let whowonId = x.WhoWon
+                   let driverName = d.ReadAll().Where(x => x.Id == whowonId).Select(x => x.Name).First()
+                   where x.Name == name
+                   select driverName;
         }
     }
 }

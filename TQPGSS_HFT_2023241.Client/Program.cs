@@ -46,6 +46,14 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
+            Console.Write("Enter the name of the circuit you want to get the winner: ");
+            string circuit = Console.ReadLine();
+            var q5 = grandPrixLogic.winnerOfTheCircuit(circuit, DriverRepo);
+            foreach (var item in q5)
+            {
+                Console.WriteLine(item);
+            }
+
         }
     }
 }
