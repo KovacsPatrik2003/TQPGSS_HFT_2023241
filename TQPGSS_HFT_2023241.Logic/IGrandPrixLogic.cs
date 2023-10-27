@@ -13,5 +13,6 @@ namespace TQPGSS_HFT_2023241.Logic
         IQueryable<GrandPrix> ReadAll();
         void Update(GrandPrix item);
         IEnumerable winnerOfTheCircuit(string name, IRepository<Driver> d);
+        IEnumerable grandPrixDetails(string name,IRepository<Driver> d);
     }
 }

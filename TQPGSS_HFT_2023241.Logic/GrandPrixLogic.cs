@@ -24,6 +24,7 @@ namespace TQPGSS_HFT_2023241.Logic
         {
             this.repo.Delete(id);
         }
+
         public GrandPrix Read(int id)
         {
             return this.repo.Read(id);
@@ -44,6 +45,19 @@ namespace TQPGSS_HFT_2023241.Logic
                    let driverName = d.ReadAll().Where(x => x.Id == whowonId).Select(x => x.Name).First()
                    where x.Name == name
                    select driverName;
+        }
+
+        public IEnumerable grandPrixDetails(string name,IRepository<Driver> d)
+        {
+            return from x in repo.ReadAll()
+                   where x.Name == name
+                   select new
+                   {
+                       Id = x.Id,
+                       Name = x.Name,
+                       Date = x.Date,
+                       Winner = d.ReadAll().Where(y => y.Id == x.WhoWon).Select(x => x.Name).First()
+                   };
         }
     }
 }

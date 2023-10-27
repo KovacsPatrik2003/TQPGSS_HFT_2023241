@@ -65,6 +65,14 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 Console.WriteLine(item);
             }
+
+            Console.Write("Enter the name of the circuit you want the details for: ");
+            string circuitName=Console.ReadLine();
+            var q8 = grandPrixLogic.grandPrixDetails(circuitName, DriverRepo);
+            foreach (var item in q8)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
