@@ -14,5 +14,6 @@ namespace TQPGSS_HFT_2023241.Logic
         void Update(Driver item);
         IEnumerable driverWins(string name, IRepository<GrandPrix> g);
         IEnumerable avaragePointPerGrandPrix(IRepository<GrandPrix> g);
+        IEnumerable whoWonTheMost(IRepository<GrandPrix> g);
     }
 }

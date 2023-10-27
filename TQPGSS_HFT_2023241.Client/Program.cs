@@ -60,6 +60,11 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
+            var q7 = driverlogic.whoWonTheMost(GrandPrixRepo);
+            foreach (var item in q7)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

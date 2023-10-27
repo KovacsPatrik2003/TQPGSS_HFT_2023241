@@ -51,5 +51,17 @@ namespace TQPGSS_HFT_2023241.Logic
                    let numberOfGranPrixes = g.ReadAll().Select(x => x).Count()
                    select Math.Round((double)x.Points / numberOfGranPrixes, 2);
         }
+
+        public IEnumerable whoWonTheMost(IRepository<GrandPrix> g)
+        {
+            var q7 = from x in g.ReadAll()
+                     group x by x.WhoWon into grp
+                     select grp.Key;
+            var q70 = q7.ToList();
+            q70.Sort();
+            return from x in repo.ReadAll()
+                         where q70.Take(1).First() == x.Id
+                         select x.Name;
+        }
     }
 }
