@@ -54,6 +54,12 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
+            var q6 = driverlogic.avaragePointPerGrandPrix(GrandPrixRepo);
+            foreach (var item in q6)
+            {
+                Console.WriteLine(item);
+            }
+
         }
     }
 }

@@ -44,5 +44,12 @@ namespace TQPGSS_HFT_2023241.Logic
                      where driver == winner
                      select a.Name;
         }
+
+        public IEnumerable avaragePointPerGrandPrix(IRepository<GrandPrix> g)
+        {
+            return from x in repo.ReadAll()
+                   let numberOfGranPrixes = g.ReadAll().Select(x => x).Count()
+                   select Math.Round((double)x.Points / numberOfGranPrixes, 2);
+        }
     }
 }
