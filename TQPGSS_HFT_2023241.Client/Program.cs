@@ -16,7 +16,7 @@ namespace TQPGSS_HFT_2023241.Client
             var GrandPrixRepo = new GrandPrixRepository(ctx);
             var driverlogic=new DriverLogic(DriverRepo,GrandPrixRepo);
             var teamLogic = new TeamLogic(TeamRepo,DriverRepo,GrandPrixRepo);
-            var grandPrixLogic = new GrandPrixLogic(GrandPrixRepo);
+            var grandPrixLogic = new GrandPrixLogic(GrandPrixRepo,DriverRepo);
 
             Console.Write("Enter the name of the team you want to get the drivers for: ");
             string teamName=Console.ReadLine();
@@ -48,7 +48,7 @@ namespace TQPGSS_HFT_2023241.Client
 
             Console.Write("Enter the name of the circuit you want to get the winner: ");
             string circuit = Console.ReadLine();
-            var q5 = grandPrixLogic.winnerOfTheCircuit(circuit, DriverRepo);
+            var q5 = grandPrixLogic.winnerOfTheCircuit(circuit);
             foreach (var item in q5)
             {
                 Console.WriteLine(item);
@@ -68,7 +68,7 @@ namespace TQPGSS_HFT_2023241.Client
 
             Console.Write("Enter the name of the circuit you want the details for: ");
             string circuitName=Console.ReadLine();
-            var q8 = grandPrixLogic.grandPrixDetails(circuitName, DriverRepo);
+            var q8 = grandPrixLogic.grandPrixDetails(circuitName);
             foreach (var item in q8)
             {
                 Console.WriteLine(item);

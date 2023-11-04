@@ -12,9 +12,11 @@ namespace TQPGSS_HFT_2023241.Logic
     public class GrandPrixLogic : IGrandPrixLogic
     {
         IRepository<GrandPrix> repo;
-        public GrandPrixLogic(IRepository<GrandPrix> repo)
+        IRepository<Driver> d;
+        public GrandPrixLogic(IRepository<GrandPrix> repo, IRepository<Driver> d)
         {
             this.repo = repo;
+            this.d = d;
         }
         public void Create(GrandPrix item)
         {
@@ -38,7 +40,7 @@ namespace TQPGSS_HFT_2023241.Logic
             this.repo.Update(item);
         }
 
-        public IEnumerable winnerOfTheCircuit(string name, IRepository<Driver> d)
+        public IEnumerable winnerOfTheCircuit(string name)
         {
             return from x in repo.ReadAll()
                    let whowonId = x.WhoWon
@@ -47,7 +49,7 @@ namespace TQPGSS_HFT_2023241.Logic
                    select driverName;
         }
 
-        public IEnumerable grandPrixDetails(string name,IRepository<Driver> d)
+        public IEnumerable grandPrixDetails(string name)
         {
             return from x in repo.ReadAll()
                    where x.Name == name
