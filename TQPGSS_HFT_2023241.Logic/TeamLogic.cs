@@ -12,9 +12,13 @@ namespace TQPGSS_HFT_2023241.Logic
     public class TeamLogic : ITeamLogic
     {
         IRepository<Team> repo;
-        public TeamLogic(IRepository<Team> repo)
+        IRepository<Driver> d;
+        IRepository<GrandPrix> g;
+        public TeamLogic(IRepository<Team> repo, IRepository<Driver> d, IRepository<GrandPrix> g)
         {
             this.repo = repo;
+            this.d = d;
+            this.g = g;
         }
         public void Create(Team item)
         {
@@ -36,7 +40,7 @@ namespace TQPGSS_HFT_2023241.Logic
         {
             this.repo.Update(item);
         }
-        public IEnumerable teamsDrivers(string teamName, IRepository<Driver> d)
+        public IEnumerable teamsDrivers(string teamName)
         {
             return from s in d.ReadAll()
                      let team = repo.ReadAll().Where(x => x.Name == teamName).Select(x => x.Id).First()
@@ -44,14 +48,14 @@ namespace TQPGSS_HFT_2023241.Logic
                      select s.Name;
         }
 
-        public IEnumerable avaragePointsPerGrandPrix(IRepository<GrandPrix> g)
+        public IEnumerable avaragePointsPerGrandPrix()
         {
             return from x in repo.ReadAll()
                    let numberOfGrandPrixes = g.ReadAll().Select(x => x.Id).Count()
                    select Math.Round(((double)x.Points / numberOfGrandPrixes), 2);
         }
 
-        public IEnumerable firstAndSecondDriverByPoints(IRepository<Driver> d)
+        public IEnumerable firstAndSecondDriverByPoints()
         {
             return from m in repo.ReadAll()
                    let driver1 = m.Driver1

@@ -15,12 +15,12 @@ namespace TQPGSS_HFT_2023241.Client
             var TeamRepo=new TeamRepository(ctx);
             var GrandPrixRepo = new GrandPrixRepository(ctx);
             var driverlogic=new DriverLogic(DriverRepo,GrandPrixRepo);
-            var teamLogic = new TeamLogic(TeamRepo);
+            var teamLogic = new TeamLogic(TeamRepo,DriverRepo,GrandPrixRepo);
             var grandPrixLogic = new GrandPrixLogic(GrandPrixRepo);
 
             Console.Write("Enter the name of the team you want to get the drivers for: ");
             string teamName=Console.ReadLine();
-            var q1 = teamLogic.teamsDrivers(teamName, DriverRepo);
+            var q1 = teamLogic.teamsDrivers(teamName);
             foreach (var item in q1)
             {
                 Console.WriteLine(item);
@@ -34,13 +34,13 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
-            var q3 = teamLogic.avaragePointsPerGrandPrix(GrandPrixRepo);
+            var q3 = teamLogic.avaragePointsPerGrandPrix();
             foreach (var item in q3)
             {
                 Console.WriteLine(item);
             }
 
-            var q4 = teamLogic.firstAndSecondDriverByPoints(DriverRepo);
+            var q4 = teamLogic.firstAndSecondDriverByPoints();
             foreach (var item in q4)
             {
                 Console.WriteLine(item);
