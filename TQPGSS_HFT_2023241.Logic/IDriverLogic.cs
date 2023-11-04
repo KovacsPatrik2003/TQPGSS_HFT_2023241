@@ -12,8 +12,8 @@ namespace TQPGSS_HFT_2023241.Logic
         Driver Read(int id);
         IQueryable<Driver> ReadAll();
         void Update(Driver item);
-        IEnumerable driverWins(string name, IRepository<GrandPrix> g);
-        IEnumerable avaragePointPerGrandPrix(IRepository<GrandPrix> g);
-        IEnumerable whoWonTheMost(IRepository<GrandPrix> g);
+        IEnumerable driverWins(string name);
+        IEnumerable avaragePointPerGrandPrix();
+        IEnumerable whoWonTheMost();
     }
 }

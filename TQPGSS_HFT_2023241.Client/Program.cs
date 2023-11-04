@@ -14,7 +14,7 @@ namespace TQPGSS_HFT_2023241.Client
             var DriverRepo = new DriverRepository(ctx);
             var TeamRepo=new TeamRepository(ctx);
             var GrandPrixRepo = new GrandPrixRepository(ctx);
-            var driverlogic=new DriverLogic(DriverRepo);
+            var driverlogic=new DriverLogic(DriverRepo,GrandPrixRepo);
             var teamLogic = new TeamLogic(TeamRepo);
             var grandPrixLogic = new GrandPrixLogic(GrandPrixRepo);
 
@@ -28,7 +28,7 @@ namespace TQPGSS_HFT_2023241.Client
 
             Console.Write("Enter the name of the driver you want to get his wins: ");
             string driverName = Console.ReadLine();
-            var q2 = driverlogic.driverWins(driverName, GrandPrixRepo);
+            var q2 = driverlogic.driverWins(driverName);
             foreach (var item in q2)
             {
                 Console.WriteLine(item);
@@ -54,13 +54,13 @@ namespace TQPGSS_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
-            var q6 = driverlogic.avaragePointPerGrandPrix(GrandPrixRepo);
+            var q6 = driverlogic.avaragePointPerGrandPrix();
             foreach (var item in q6)
             {
                 Console.WriteLine(item);
             }
 
-            var q7 = driverlogic.whoWonTheMost(GrandPrixRepo);
+            var q7 = driverlogic.whoWonTheMost();
             foreach (var item in q7)
             {
                 Console.WriteLine(item);

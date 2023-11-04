@@ -10,9 +10,11 @@ namespace TQPGSS_HFT_2023241.Logic
     public class DriverLogic : IDriverLogic
     {
         IRepository<Driver> repo;
-        public DriverLogic(IRepository<Driver> repo)
+        IRepository<GrandPrix> g;
+        public DriverLogic(IRepository<Driver> repo, IRepository<GrandPrix> g)
         {
             this.repo = repo;
+            this.g = g;
         }
         public void Create(Driver item)
         {
@@ -36,7 +38,7 @@ namespace TQPGSS_HFT_2023241.Logic
             this.repo.Update(item);
         }
 
-        public IEnumerable driverWins(string name, IRepository<GrandPrix> g)
+        public IEnumerable driverWins(string name)
         {
             return from a in g.ReadAll()
                      let winner = a.WhoWon
@@ -45,14 +47,14 @@ namespace TQPGSS_HFT_2023241.Logic
                      select a.Name;
         }
 
-        public IEnumerable avaragePointPerGrandPrix(IRepository<GrandPrix> g)
+        public IEnumerable avaragePointPerGrandPrix()
         {
             return from x in repo.ReadAll()
                    let numberOfGranPrixes = g.ReadAll().Select(x => x).Count()
                    select Math.Round((double)x.Points / numberOfGranPrixes, 2);
         }
 
-        public IEnumerable whoWonTheMost(IRepository<GrandPrix> g)
+        public IEnumerable whoWonTheMost()
         {
             var q7 = from x in g.ReadAll()
                      group x by x.WhoWon into grp
