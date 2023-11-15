@@ -207,6 +207,18 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
+        [Test]
+        public void avaragePointsPerGrandPrixTest()
+        {
+            var result = tl.avaragePointsPerGrandPrix();
+            var expected = new List<double>()
+            {
+                Math.Round((double)400/5,2),
+                Math.Round((double)300/5,2),
+                Math.Round((double)200/5,2)
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
 
         /*[Test]
