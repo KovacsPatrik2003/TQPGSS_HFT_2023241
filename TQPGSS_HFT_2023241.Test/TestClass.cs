@@ -230,6 +230,21 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
+        [Test]
+        public void avaragePointPerGrandPrix()
+        {
+            var result = dl.avaragePointPerGrandPrix();
+            var expected = new List<double>()
+            {
+                Math.Round((double)250/5,2),
+                Math.Round((double)150/5,2),
+                Math.Round((double)151/5,2),
+                Math.Round((double)149/5,2),
+                Math.Round((double)110/5,2),
+                Math.Round((double)90/5,2)
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
 
         /*[Test]
