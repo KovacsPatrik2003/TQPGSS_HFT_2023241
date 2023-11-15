@@ -184,6 +184,18 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
+        [Test]
+        public void driverWinsTest()
+        {
+            var result = dl.driverWins("Max Verstappen");
+            var expected = new List<string>()
+            {
+                "BahRain",
+                "Jeddah",
+                "Austria"
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
 
         /*[Test]
