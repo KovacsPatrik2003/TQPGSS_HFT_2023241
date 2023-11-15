@@ -245,22 +245,16 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
-        
-
-        /*[Test]
-        public void firstAndSecondDriverByPointsTest()
+        [Test]
+        public void whoWonTheMostTest()
         {
-            var result = tl.firstAndSecondDriverByPoints();
-            result.ToString();
-            
-            List<string> expected = new List<string>()
+            var result = dl.whoWonTheMost();
+            var expected = new List<string>()
             {
-                "{ team = Red Bull, Driver1 = 1, Driver2 = 11, Driver1Points = 250, Driver2Points = 150, first = 1, second = 11 }",
-                "{ team = Ferrari, Driver1 = 16, Driver2 = 55, Driver1Points = 151, Driver2Points = 149, first = 16, second = 55 }",
-                "{ team = Mercedes, Driver1 = 44, Driver2 = 63, Driver1Points = 110, Driver2Points = 90, first = 44, second = 63 }"
+                "Max Verstappen"
             };
             Assert.That(result, Is.EqualTo(expected));
-        }*/
+        }
 
     }
 }
