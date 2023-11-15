@@ -219,6 +219,17 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
+        [Test]
+        public void winnerOfTheCircuitTest()
+        {
+            var result = gl.winnerOfTheCircuit("BahRain");
+            var expected = new List<string>()
+            {
+                "Max Verstappen"
+
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
 
         /*[Test]
