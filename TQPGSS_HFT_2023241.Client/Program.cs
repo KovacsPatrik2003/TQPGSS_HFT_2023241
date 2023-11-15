@@ -25,7 +25,7 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 Console.WriteLine(item);
             }
-
+            
             Console.Write("Enter the name of the driver you want to get his wins: ");
             string driverName = Console.ReadLine();
             var q2 = driverlogic.driverWins(driverName);
@@ -33,7 +33,7 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 Console.WriteLine(item);
             }
-
+            
             var q3 = teamLogic.avaragePointsPerGrandPrix();
             foreach (var item in q3)
             {
@@ -45,7 +45,7 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 Console.WriteLine(item);
             }
-
+            
             Console.Write("Enter the name of the circuit you want to get the winner: ");
             string circuit = Console.ReadLine();
             var q5 = grandPrixLogic.winnerOfTheCircuit(circuit);
@@ -53,7 +53,7 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 Console.WriteLine(item);
             }
-
+            
             var q6 = driverlogic.avaragePointPerGrandPrix();
             foreach (var item in q6)
             {
