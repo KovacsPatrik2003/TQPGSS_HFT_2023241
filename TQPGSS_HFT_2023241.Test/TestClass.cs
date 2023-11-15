@@ -160,6 +160,18 @@ namespace TQPGSS_HFT_2023241.Test
 
 
         }
+        [Test]
+        public void teamDriversTest()
+        {
+
+            var result = tl.teamsDrivers("Ferrari");
+            var expected = new List<string>()
+            {
+                "Charles Leclerc",
+                "Carlos Sainz"
+            };
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
 
         /*[Test]
