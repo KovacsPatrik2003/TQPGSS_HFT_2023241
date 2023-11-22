@@ -255,6 +255,19 @@ namespace TQPGSS_HFT_2023241.Test
             };
             Assert.That(result, Is.EqualTo(expected));
         }
-
+        [Test]
+        public void CreateGrandPrixTest()
+        {
+            var grandprix = new GrandPrix() { Name = "Las Vegas" };
+            gl.Create(grandprix);
+            mockGrandPrixRepository.Verify(r => r.Create(grandprix), Times.Once);
+        }
+        [Test]
+        public void CreateDriverTest()
+        {
+            var driver = new Driver() { Name="Daniel Ricciardo"};
+            dl.Create(driver);
+            mockDriverRepository.Verify(r => r.Create(driver), Times.Once);
+        }
     }
 }
