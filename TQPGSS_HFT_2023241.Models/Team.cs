@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace TQPGSS_HFT_2023241.Models
 {
@@ -19,6 +20,7 @@ namespace TQPGSS_HFT_2023241.Models
         [ForeignKey(nameof(Driver))]
         public int Driver2 { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual List<Driver> Drivers { get; set; }
         public int Points { get; set; }
         public string Principal { get; set; }
