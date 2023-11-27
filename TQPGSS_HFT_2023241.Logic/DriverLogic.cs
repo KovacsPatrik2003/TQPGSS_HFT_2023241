@@ -18,6 +18,10 @@ namespace TQPGSS_HFT_2023241.Logic
         }
         public void Create(Driver item)
         {
+            if (item.Name.Length<3)
+            {
+                throw new ArgumentException("name is too short...");
+            }
             this.repo.Create(item);
         }
         public void Delete(int id)
