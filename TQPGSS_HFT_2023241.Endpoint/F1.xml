@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<F12022Results>
+  <F1Drivers>
+    <driver>
+      <Id>1</Id>
+      <Name>Max Verstappen</Name>
+      <Age>26</Age>
+      <Points>454</Points>
+      <TeamId>1</TeamId>
+    </driver>
+    <driver>
+      <Id>16</Id>
+      <Name>Charles Leclerc</Name>
+      <Age>26</Age>
+      <Points>308</Points>
+      <TeamId>2</TeamId>
+    </driver>
+    <driver>
+      <Id>11</Id>
+      <Name>Sergio Perez</Name>
+      <Age>33</Age>
+      <Points>305</Points>
+      <TeamId>1</TeamId>
+    </driver>
+    <driver>
+      <Id>63</Id>
+      <Name>George Russell</Name>
+      <Age>25</Age>
+      <Points>275</Points>
+      <TeamId>3</TeamId>
+    </driver>
+    <driver>
+      <Id>55</Id>
+      <Name>Carlos Sainz</Name>
+      <Age>29</Age>
+      <Points>246</Points>
+      <TeamId>2</TeamId>
+    </driver>
+    <driver>
+      <Id>44</Id>
+      <Name>Lewis Hamilton</Name>
+      <Age>38</Age>
+      <Points>240</Points>
+      <TeamId>3</TeamId>
+    </driver>
+    <driver>
+      <Id>4</Id>
+      <Name>Lando Norris</Name>
+      <Age>23</Age>
+      <Points>122</Points>
+      <TeamId>5</TeamId>
+    </driver>
+    <driver>
+      <Id>31</Id>
+      <Name>Esteban Ocon</Name>
+      <Age>27</Age>
+      <Points>92</Points>
+      <TeamId>4</TeamId>
+    </driver>
+    <driver>
+      <Id>14</Id>
+      <Name>Fernando Alonso</Name>
+      <Age>42</Age>
+      <Points>81</Points>
+      <TeamId>4</TeamId>
+    </driver>
+    <driver>
+      <Id>77</Id>
+      <Name>Valtteri Bottas</Name>
+      <Age>34</Age>
+      <Points>49</Points>
+      <TeamId>6</TeamId>
+    </driver>
+    <driver>
+      <Id>3</Id>
+      <Name>Daniel Ricciardo</Name>
+      <Age>34</Age>
+      <Points>37</Points>
+      <TeamId>5</TeamId>
+    </driver>
+    <driver>
+      <Id>5</Id>
+      <Name>Sebastian Vettel</Name>
+      <Age>36</Age>
+      <Points>37</Points>
+      <TeamId>7</TeamId>
+    </driver>
+    <driver>
+      <Id>20</Id>
+      <Name>Kevin Magnussen</Name>
+      <Age>31</Age>
+      <Points>25</Points>
+      <TeamId>8</TeamId>
+    </driver>
+    <driver>
+      <Id>10</Id>
+      <Name>Pierre Gasly</Name>
+      <Age>27</Age>
+      <Points>23</Points>
+      <TeamId>9</TeamId>
+    </driver>
+    <driver>
+      <Id>18</Id>
+      <Name>Lance Stroll</Name>
+      <Age>24</Age>
+      <Points>18</Points>
+      <TeamId>7</TeamId>
+    </driver>
+    <driver>
+      <Id>47</Id>
+      <Name>Mick Schumacher</Name>
+      <Age>24</Age>
+      <Points>12</Points>
+      <TeamId>8</TeamId>
+    </driver>
+    <driver>
+      <Id>22</Id>
+      <Name>Yuki Tsunoda</Name>
+      <Age>23</Age>
+      <Points>12</Points>
+      <TeamId>9</TeamId>
+    </driver>
+    <driver>
+      <Id>24</Id>
+      <Name>Guanyu Zhou</Name>
+      <Age>24</Age>
+      <Points>6</Points>
+      <TeamId>6</TeamId>
+    </driver>
+    <driver>
+      <Id>23</Id>
+      <Name>Alex Albon</Name>
+      <Age>27</Age>
+      <Points>4</Points>
+      <TeamId>10</TeamId>
+    </driver>
+    <driver>
+      <Id>6</Id>
+      <Name>Nicholas Latifi</Name>
+      <Age>28</Age>
+      <Points>2</Points>
+      <TeamId>10</TeamId>
+    </driver>
+  </F1Drivers>
+  <F1Teams>
+    <Team>
+      <Id>1</Id>
+      <Name>Red Bull</Name>
+      <Driver1Id>1</Driver1Id>
+      <Driver2Id>11</Driver2Id>
+      <Points>759</Points>
+      <TeamPrincipal>Christian Horner</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>2</Id>
+      <Name>Ferrari</Name>
+      <Driver1Id>16</Driver1Id>
+      <Driver2Id>55</Driver2Id>
+      <Points>554</Points>
+      <TeamPrincipal>Mattia Binotto</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>3</Id>
+      <Name>Mercedes</Name>
+      <Driver1Id>44</Driver1Id>
+      <Driver2Id>63</Driver2Id>
+      <Points>515</Points>
+      <TeamPrincipal>Toto Wolf</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>4</Id>
+      <Name>Alpine Renault</Name>
+      <Driver1Id>14</Driver1Id>
+      <Driver2Id>31</Driver2Id>
+      <Points>173</Points>
+      <TeamPrincipal>Otmar Szafnauer</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>5</Id>
+      <Name>McLaren Mercedes</Name>
+      <Driver1Id>4</Driver1Id>
+      <Driver2Id>3</Driver2Id>
+      <Points>159</Points>
+      <TeamPrincipal>Zak Brown</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>6</Id>
+      <Name>Alfa Romeo Ferrari</Name>
+      <Driver1Id>77</Driver1Id>
+      <Driver2Id>24</Driver2Id>
+      <Points>55</Points>
+      <TeamPrincipal>Frédéric Vasseur</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>7</Id>
+      <Name>Aston Martin Mercedes</Name>
+      <Driver1Id>5</Driver1Id>
+      <Driver2Id>18</Driver2Id>
+      <Points>55</Points>
+      <TeamPrincipal>Mike Krack</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>8</Id>
+      <Name>Haas Ferrari</Name>
+      <Driver1Id>20</Driver1Id>
+      <Driver2Id>47</Driver2Id>
+      <Points>37</Points>
+      <TeamPrincipal>Günther Steiner</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>9</Id>
+      <Name>AlfaTauri</Name>
+      <Driver1Id>22</Driver1Id>
+      <Driver2Id>10</Driver2Id>
+      <Points>35</Points>
+      <TeamPrincipal>Franz Tost</TeamPrincipal>
+    </Team>
+    <Team>
+      <Id>10</Id>
+      <Name>Williams Mercedes</Name>
+      <Driver1Id>23</Driver1Id>
+      <Driver2Id>6</Driver2Id>
+      <Points>8</Points>
+      <TeamPrincipal>Jost Capito</TeamPrincipal>
+    </Team>
+  </F1Teams>
+  <GrandPrixes>
+    <GrandPrix>
+      <Id>1</Id>
+      <Name>BahRain</Name>
+      <Date>March 20</Date>
+      <WhoWon>16</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>2</Id>
+      <Name>Saudi Arabia</Name>
+      <Date>March 27</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>3</Id>
+      <Name>Australia</Name>
+      <Date>April 10</Date>
+      <WhoWon>16</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>4</Id>
+      <Name>Emilia-Romagna</Name>
+      <Date>April 24</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>5</Id>
+      <Name>Miami</Name>
+      <Date>May 8</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>6</Id>
+      <Name>Spain</Name>
+      <Date>May 22</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>7</Id>
+      <Name>Monaco</Name>
+      <Date>May 29</Date>
+      <WhoWon>11</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>8</Id>
+      <Name>Azerbaijan</Name>
+      <Date>June 12</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>9</Id>
+      <Name>Canada</Name>
+      <Date>June 19</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>10</Id>
+      <Name>Britain</Name>
+      <Date>July 3</Date>
+      <WhoWon>55</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>11</Id>
+      <Name>Austria</Name>
+      <Date>July 10</Date>
+      <WhoWon>16</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>12</Id>
+      <Name>France</Name>
+      <Date>July 24</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>13</Id>
+      <Name>Hungary</Name>
+      <Date>July 31</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>14</Id>
+      <Name>Belgium</Name>
+      <Date>August 28</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>15</Id>
+      <Name>Netherlands</Name>
+      <Date>September 4</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>16</Id>
+      <Name>Italy</Name>
+      <Date>September 11</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>17</Id>
+      <Name>Singapore</Name>
+      <Date>October 2</Date>
+      <WhoWon>11</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>18</Id>
+      <Name>Japan</Name>
+      <Date>October 9</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>19</Id>
+      <Name>USA</Name>
+      <Date>October 23</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>20</Id>
+      <Name>Mexico City</Name>
+      <Date>October 30</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>21</Id>
+      <Name>Sao Paulo</Name>
+      <Date>November 13</Date>
+      <WhoWon>63</WhoWon>
+    </GrandPrix>
+    <GrandPrix>
+      <Id>22</Id>
+      <Name>Abu Dhabi</Name>
+      <Date>November 20</Date>
+      <WhoWon>1</WhoWon>
+    </GrandPrix>
+  </GrandPrixes>
+</F12022Results>

@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TQPGSS_HFT_2023241.Logic;
+using TQPGSS_HFT_2023241.Models;
+using TQPGSS_HFT_2023241.Repository;
 
 namespace TQPGSS_HFT_2023241.Endpoint
 {
@@ -25,6 +28,14 @@ namespace TQPGSS_HFT_2023241.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<F1DbContext>();
+            services.AddTransient<IRepository<Driver>, DriverRepository>();
+            services.AddTransient<IRepository<Team>, TeamRepository>();
+            services.AddTransient<IRepository<GrandPrix>, GrandPrixRepository>();
+
+            services.AddTransient<IDriverLogic, DriverLogic>();
+            services.AddTransient<ITeamLogic, TeamLogic>();
+            services.AddTransient<IGrandPrixLogic, GrandPrixLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
