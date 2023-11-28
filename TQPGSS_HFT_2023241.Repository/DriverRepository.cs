@@ -24,7 +24,12 @@ namespace TQPGSS_HFT_2023241.Repository
             var oldItem = Read(item.Id);
             foreach (var prop in oldItem.GetType().GetProperties())
             {
-                prop.SetValue(oldItem, prop.GetValue(item));
+                //prop.SetValue(oldItem, prop.GetValue(item));
+
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(oldItem, prop.GetValue(item));
+                }
             }
             ctx.SaveChanges();
         }

@@ -26,7 +26,7 @@ namespace TQPGSS_HFT_2023241.Logic
             {
                 throw new ArgumentException("name is too short...");
             }
-            this.Create(item);
+            this.repo.Create(item);
         }
         public void Delete(int id)
         {
