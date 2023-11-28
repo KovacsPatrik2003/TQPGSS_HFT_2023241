@@ -30,7 +30,7 @@ namespace TQPGSS_HFT_2023241.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<F1DbContext>();
+            services.AddSingleton<F1DbContext>();
             services.AddTransient<IRepository<Driver>, DriverRepository>();
             services.AddTransient<IRepository<Team>, TeamRepository>();
             services.AddTransient<IRepository<GrandPrix>, GrandPrixRepository>();
