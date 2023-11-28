@@ -16,7 +16,7 @@ namespace TQPGSS_HFT_2023241.Endpoint.Controllers
         {
             this.logic = logic;
         }
-        [HttpGet]
+        [HttpGet("{name}")]
         public IEnumerable TeamsDrivers(string name)
         {
             return this.logic.teamsDrivers(name);
