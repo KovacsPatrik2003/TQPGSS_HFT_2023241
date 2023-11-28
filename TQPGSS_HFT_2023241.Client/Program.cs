@@ -5,6 +5,7 @@ using TQPGSS_HFT_2023241.Models;
 
 using ConsoleTools;
 using System.Collections.Generic;
+using System.Collections;
 //using System.Net.Http.Headers;
 
 namespace TQPGSS_HFT_2023241.Client
