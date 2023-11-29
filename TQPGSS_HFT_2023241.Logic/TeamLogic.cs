@@ -46,10 +46,26 @@ namespace TQPGSS_HFT_2023241.Logic
         }
         public IEnumerable teamsDrivers(string teamName)
         {
-            return from s in d.ReadAll()
+            var result= from s in d.ReadAll()
                      let team = repo.ReadAll().Where(x => x.Name == teamName).Select(x => x.Id).First()
                      where team == s.TeamId
                      select s.Name;
+            try
+            {
+                if (result.Count() != 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+
+                return new List<string>() { "This team does not exist." };
+            }
         }
 
         public IEnumerable avaragePointsPerGrandPrix()

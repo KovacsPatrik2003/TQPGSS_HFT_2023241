@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Versioning;
 using TQPGSS_HFT_2023241.Models;
@@ -44,11 +45,31 @@ namespace TQPGSS_HFT_2023241.Logic
 
         public IEnumerable driverWins(string name)
         {
-            return from a in g.ReadAll()
-                     let winner = a.WhoWon
-                     let driver = repo.ReadAll().Where(x => x.Name == name).Select(x => x.Id).First()
-                     where driver == winner
-                     select a.Name;
+            var result = from a in g.ReadAll()
+                         let winner = a.WhoWon
+                         let driver = repo.ReadAll().Where(x => x.Name == name).Select(x => x.Id).First()
+                         where driver == winner
+                         select a.Name;
+            try
+            {
+                if (result.Count() != 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+
+                return new List<string>() { "This driver has no wins or this driver does not exist." };
+            }
+            
+
+
+
         }
 
         public IEnumerable avaragePointPerGrandPrix()

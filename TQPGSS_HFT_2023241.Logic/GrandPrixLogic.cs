@@ -46,16 +46,32 @@ namespace TQPGSS_HFT_2023241.Logic
 
         public IEnumerable winnerOfTheCircuit(string name)
         {
-            return from x in repo.ReadAll()
-                   let whowonId = x.WhoWon
-                   let driverName = d.ReadAll().Where(x => x.Id == whowonId).Select(x => x.Name).First()
-                   where x.Name == name
-                   select driverName;
+            var result= from x in repo.ReadAll()
+                        let whowonId = x.WhoWon
+                        let driverName = d.ReadAll().Where(x => x.Id == whowonId).Select(x => x.Name).First()
+                        where x.Name == name
+                        select driverName;
+            try
+            {
+                if (result.Count() != 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+
+                return new List<string>() { "This circuit does not exist." };
+            }
         }
 
         public IEnumerable grandPrixDetails(string name)
         {
-            return from x in repo.ReadAll()
+            var result= from x in repo.ReadAll()
                    where x.Name == name
                    select new
                    {
@@ -64,6 +80,22 @@ namespace TQPGSS_HFT_2023241.Logic
                        Date = x.Date,
                        Winner = d.ReadAll().Where(y => y.Id == x.WhoWon).Select(x => x.Name).First()
                    };
+            try
+            {
+                if (result.Count() != 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+
+                return new List<string>() { "This circuit does not exist." };
+            }
         }
     }
 }
