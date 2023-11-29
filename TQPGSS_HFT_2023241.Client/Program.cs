@@ -1,12 +1,10 @@
 ﻿using System;
-
 using System.Linq;
 using TQPGSS_HFT_2023241.Models;
-
 using ConsoleTools;
 using System.Collections.Generic;
 using System.Collections;
-//using System.Net.Http.Headers;
+
 
 namespace TQPGSS_HFT_2023241.Client
 {
@@ -58,12 +56,6 @@ namespace TQPGSS_HFT_2023241.Client
             {
                 if (entity == "Team")
                 {
-                    //var items = teamLogic.ReadAll();
-                    //foreach (var item in items)
-                    //{
-                    //    Console.WriteLine($"{item.Id} {item.Name} {item.Driver1} {item.Driver2} {item.Points} {item.Principal}");
-
-                    //}
                     List<Team> teams = rest.Get<Team>("team");
                     foreach (var item in teams)
                     {
@@ -75,12 +67,6 @@ namespace TQPGSS_HFT_2023241.Client
                 {
                     if (entity == "GrandPrix")
                     {
-                        //var items = grandPrixLogic.ReadAll();
-                        //foreach (var item in items)
-                        //{
-                        //    Console.WriteLine($"{item.Id} {item.Name} {item.Date} {item.WhoWon}");
-
-                        //}
                         List<GrandPrix> grandprixs = rest.Get<GrandPrix>("grandprix");
                         foreach (var item in grandprixs)
                         {
@@ -163,7 +149,9 @@ namespace TQPGSS_HFT_2023241.Client
         }
         static void TeamsDrivers()
         {
-            List<object> a = rest.Get<object>("TeamStat/TeamsDrivers");
+            Console.Write("Enter the team's name: ");
+            string name = Console.ReadLine();
+            List<object> a = rest.Get<object>($"TeamStat/TeamsDrivers/{name}");
             foreach (var item in a)
             {
                 Console.WriteLine(item);
@@ -173,7 +161,9 @@ namespace TQPGSS_HFT_2023241.Client
         static void DriverWins()
         {
 
-            List<object> a = rest.Get<object>("DriverStat/DriverWins");
+            Console.Write("Enter the driver's name: ");
+            string name= Console.ReadLine();
+            List<object> a = rest.Get<object>($"DriverStat/DriverWins/{name}");
             foreach (var item in a)
             {
                 Console.WriteLine(item);
@@ -201,7 +191,9 @@ namespace TQPGSS_HFT_2023241.Client
         }
         static void WinnerOfTheCircuit()
         {
-            List<object> a = rest.Get<object>("GrandPrixStat/WinnerOfTheCircuit");
+            Console.Write("Enter the circuit's name: ");
+            string name=Console.ReadLine();
+            List<object> a = rest.Get<object>($"GrandPrixStat/WinnerOfTheCircuit/{name}");
             foreach (var item in a)
             {
                 Console.WriteLine(item);
@@ -228,7 +220,9 @@ namespace TQPGSS_HFT_2023241.Client
         }
         static void GrandPrixDetails()
         {
-            List<object> a = rest.Get<object>("GrandPrixStat/GrandPrixDetails");
+            Console.Write("Enter the GrandPrix's name: ");
+            string name = Console.ReadLine();
+            List<object> a = rest.Get<object>($"GrandPrixStat/GrandPrixDetails/{name}");
             foreach (var item in a)
             {
                 Console.WriteLine(item);
