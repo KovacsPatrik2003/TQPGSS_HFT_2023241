@@ -175,12 +175,11 @@ namespace TQPGSS_HFT_2023241.Test
         [Test]
         public void teamDriversTest2()
         {
-
-            var result = tl.teamsDrivers("Red Bull");
+            //teszt nem létező csapatra
+            var result = tl.teamsDrivers("Suzuki");
             var expected = new List<string>()
             {
-                "Max Verstappen",
-                "Sergio Perez"
+                "This team does not exist."
             };
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -199,16 +198,17 @@ namespace TQPGSS_HFT_2023241.Test
         [Test]
         public void driverWinsTest2()
         {
-            var result = dl.driverWins("Charles Leclerc");
+            //teszt nem létező vagy futamgyőzelem nélküli versenyzőre
+            var result = dl.driverWins("Lewis Hamilton");
             var expected = new List<string>()
             {
-                "Hungary"
+                "This driver has no wins or this driver does not exist."
 
             };
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void avaragePointsPerGrandPrixTest()
+        public void avaragePointsPerGrandPrixByTeamTest()
         {
             var result = tl.avaragePointsPerGrandPrix();
             var expected = new List<double>()
@@ -231,7 +231,7 @@ namespace TQPGSS_HFT_2023241.Test
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void avaragePointPerGrandPrix()
+        public void avaragePointPerGrandPrixByDriversTest()
         {
             var result = dl.avaragePointPerGrandPrix();
             var expected = new List<double>()
