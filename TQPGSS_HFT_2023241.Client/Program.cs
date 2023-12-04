@@ -10,6 +10,37 @@ namespace TQPGSS_HFT_2023241.Client
 {
     internal class Program
     {
+        static void Read(string entity)
+        {
+            if (entity == "Driver")
+            {
+                Console.Write("Enter the id: ");
+                int id = int.Parse(Console.ReadLine());
+                Driver d = rest.Get<Driver>(id, "driver");
+                Console.WriteLine($"{d.Id} {d.Name} {d.Age} {d.Points} {d.TeamId}");
+            }
+            else
+            {
+                if (entity == "Team")
+                {
+                    Console.Write("Enter the id: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Team t = rest.Get<Team>(id, "team");
+                    Console.WriteLine($"{t.Id} {t.Name} {t.Driver1} {t.Driver2} {t.Points} {t.Principal}");
+                }
+                else
+                {
+                    if (entity == "GrandPrix")
+                    {
+                        Console.Write("Enter the id: ");
+                        int id = int.Parse(Console.ReadLine());
+                        GrandPrix g = rest.Get<GrandPrix>(id, "grandprix");
+                        Console.WriteLine($"{g.Id} {g.Name} {g.Name} {g.WhoWon}");
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
         static void Create(string entity)
         {
             if (entity=="Driver")
@@ -235,6 +266,7 @@ namespace TQPGSS_HFT_2023241.Client
             rest = new RestService("http://localhost:18928/");
 
             var driverSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("Read",()=>Read("Driver"))
                 .Add("List", () => List("Driver"))
                 .Add("Create", () => Create("Driver"))
                 .Add("Delete", () => Delete("Driver"))
@@ -245,6 +277,7 @@ namespace TQPGSS_HFT_2023241.Client
                 .Add("Exit", ConsoleMenu.Close);
 
             var teamSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("Read",()=>Read("Team"))
                 .Add("List", () => List("Team"))
                 .Add("Create", () => Create("Team"))
                 .Add("Delete", () => Delete("Team"))
@@ -255,6 +288,7 @@ namespace TQPGSS_HFT_2023241.Client
                 .Add("Exit", ConsoleMenu.Close);
 
             var grandPrixSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("Read",()=>Read("GrandPrix"))
                 .Add("List", () => List("GrandPrix"))
                 .Add("Create", () => Create("GrandPrix"))
                 .Add("Delete", () => Delete("GrandPrix"))
