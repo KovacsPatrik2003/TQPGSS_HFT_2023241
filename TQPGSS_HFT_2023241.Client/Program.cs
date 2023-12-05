@@ -35,7 +35,7 @@ namespace TQPGSS_HFT_2023241.Client
                         Console.Write("Enter the id: ");
                         int id = int.Parse(Console.ReadLine());
                         GrandPrix g = rest.Get<GrandPrix>(id, "grandprix");
-                        Console.WriteLine($"{g.Id} {g.Name} {g.Name} {g.WhoWon}");
+                        Console.WriteLine($"{g.Id} {g.Name} {g.Date} {g.WhoWon}");
                     }
                 }
             }
