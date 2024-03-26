@@ -3,18 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TQPGSS_HFT_2023241.Wpfclient"
+        xmlns:local="clr-namespace:TQPGSS_HFT_2023241.Wpfclient" xmlns:local1="clr-namespace:TQPGSS_HFT_2023241.Wpfclient.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-
+    <Window.DataContext>
+        <local1:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Driver oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"></Button>
-        <Button Grid.Column="1" Content="GrandPrix oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
-        <Button Grid.Column="2" Content="Team oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Command="{Binding driverWindowCommand}" Content="Driver oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Command="{Binding teamWindowCommand}" Grid.Column="1" Content="GrandPrix oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Command="{Binding grandPrixWindowCommand}" Grid.Column="2" Content="Team oldal" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
     </Grid>
 </Window>

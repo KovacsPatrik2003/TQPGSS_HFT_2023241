@@ -24,10 +24,5 @@ namespace TQPGSS_HFT_2023241.Wpfclient
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new DriverWindow().Show();
-        }
     }
 }
