@@ -48,16 +48,19 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 
         public DriverWindowViewModel()
         {
-            Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver");
-
-            CreateDriverCommand = new RelayCommand(() =>
+            if (!IsInDesignMode)
             {
-                Drivers.Add(new Driver()
+                Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver");
+
+                CreateDriverCommand = new RelayCommand(() =>
                 {
-                    Name = "Kovacs Patrik"
+                    Drivers.Add(new Driver()
+                    {
+                        Name = "Kovacs Patrik"
+                    });
                 });
-            });
-            DeleteDriverCommand = new RelayCommand(() => Drivers.Delete(SelectedDriver.Id), () => { return selectedDriver != null; });
+                DeleteDriverCommand = new RelayCommand(() => Drivers.Delete(SelectedDriver.Id), () => { return selectedDriver != null; });
+            }
         }
     }
 }
