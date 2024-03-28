@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,6 +29,17 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
             get { return selectedGrandPrix; }
             set
             {
+                //if (value != null)
+                //{
+                //    selectedGrandPrix = new GrandPrix()
+                //    {
+                //        Name = value.Name,
+                //        Date = value.Date,
+                //        WhoWon = value.WhoWon,
+                //    };
+                //    OnPropertyChanged();
+                //    (DeleteGrandPrixCommand as RelayCommand).NotifyCanExecuteChanged();
+                //}
                 SetProperty(ref selectedGrandPrix, value);
                 (DeleteGrandPrixCommand as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -46,7 +58,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
             
             if (!IsInDesignMode)
             {
-                GrandPrixs = new RestCollection<GrandPrix>("http://localhost:18928/", "grandprix");
+                GrandPrixs = new RestCollection<GrandPrix>("http://localhost:18928/", "grandprix", "hub");
 
                 CreateGrandPrixCommand = new RelayCommand(() =>
                 {

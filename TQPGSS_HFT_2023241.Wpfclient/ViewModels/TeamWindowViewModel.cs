@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,9 +29,21 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 			get { return selectedTeam; }
 			set
 			{
-				SetProperty(ref selectedTeam, value);
-				(DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
-			}
+
+                //if (value != null)
+                //{
+                //    selectedTeam = new Team()
+                //    {
+                //        Name = value.Name,
+                //        Points = value.Points,
+                //        Principal = value.Principal,
+                //    };
+                //    OnPropertyChanged();
+                //    (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+                //}
+                SetProperty(ref selectedTeam, value);
+                (DeleteTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
 		}
 
         public static bool IsInDesignMode
@@ -45,7 +58,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 		{
             if (!IsInDesignMode)
             {
-                Teams = new RestCollection<Team>("http://localhost:18928/", "team");
+                Teams = new RestCollection<Team>("http://localhost:18928/", "team", "hub");
 
                 CreateTeamCommand = new RelayCommand(() => {
                     

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,6 +32,16 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
             get { return selectedDriver; }
             set
             {
+                //if (value != null)
+                //{
+                //    selectedDriver = new Driver()
+                //    {
+                //        Name = value.Name,
+                //        Points = value.Points,
+                //    };
+                //    OnPropertyChanged();
+                //    (DeleteDriverCommand as RelayCommand).NotifyCanExecuteChanged();
+                //}
                 SetProperty(ref selectedDriver, value);
                 (DeleteDriverCommand as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -52,7 +63,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
             
             if (!IsInDesignMode)
             {
-                Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver");
+                Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver", "hub");
 
                 CreateDriverCommand = new RelayCommand(() =>
                 {

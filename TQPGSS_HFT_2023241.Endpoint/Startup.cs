@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TQPGSS_HFT_2023241.Endpoint.Services;
 using TQPGSS_HFT_2023241.Logic;
 using TQPGSS_HFT_2023241.Models;
 using TQPGSS_HFT_2023241.Repository;
@@ -38,6 +39,8 @@ namespace TQPGSS_HFT_2023241.Endpoint
             services.AddTransient<IDriverLogic, DriverLogic>();
             services.AddTransient<ITeamLogic, TeamLogic>();
             services.AddTransient<IGrandPrixLogic, GrandPrixLogic>();
+
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -72,6 +75,7 @@ namespace TQPGSS_HFT_2023241.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
