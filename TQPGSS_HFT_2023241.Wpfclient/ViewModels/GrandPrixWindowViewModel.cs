@@ -43,23 +43,27 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
         }
         public GrandPrixWindowViewModel()
         {
+            
             if (!IsInDesignMode)
             {
                 GrandPrixs = new RestCollection<GrandPrix>("http://localhost:18928/", "grandprix");
 
                 CreateGrandPrixCommand = new RelayCommand(() =>
                 {
+                    
                     GrandPrixs.Add(new GrandPrix()
                     {
-                        Name = "Ajak",
-                        Date = "Jan 1",
-                        WhoWon = 1
+                        Name = SelectedGrandPrix.Name,
+                        Date = SelectedGrandPrix.Date,
+                        WhoWon = SelectedGrandPrix.WhoWon
                     });
                 });
 
                 DeleteGrandPrixCommand = new RelayCommand(() => GrandPrixs.Delete(SelectedGrandPrix.Id), () => { return selectedGrandPrix != null; });
-            }
 
+                UpdateGrandPrixCommand = new RelayCommand(() => GrandPrixs.Update(SelectedGrandPrix));
+            }
+            SelectedGrandPrix = new GrandPrix();
         }
 
     }

@@ -22,14 +22,22 @@
                         <StackPanel>
                             <Label Content="{Binding Name}" ></Label>
                             <Label Content="{Binding Points}" ></Label>
+                            <Label Content="{Binding Principal}" ></Label>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
+            <Label Content="Name: " Background="LightBlue" FontSize="15"></Label>
+            <TextBox Text="{Binding SelectedTeam.Name}" FontSize="15" Margin="0,0,0,10"></TextBox>
+            <Label Content="Team Principal: " Background="LightBlue" FontSize="15"></Label>
+            <TextBox Text="{Binding SelectedTeam.Principal}" FontSize="15" Margin="0,0,0,10"></TextBox>
+            <Label Content="Points: " Background="LightBlue" FontSize="15"></Label>
+            <TextBox Text="{Binding SelectedTeam.Points}" FontSize="15" Margin="0,0,0,10"></TextBox>
             <Button Content="Add Team" Command="{Binding CreateTeamCommand}" Margin="10" Padding="10"></Button>
             <Button Content="Delete Team" Command="{Binding DeleteTeamCommand}" Margin="10" Padding="10"></Button>
+            <Button Content="Update Team" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
         </StackPanel>
     </Grid>
 </Window>

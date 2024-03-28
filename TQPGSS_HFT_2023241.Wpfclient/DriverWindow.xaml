@@ -21,7 +21,6 @@
                     <Border BorderThickness="1" BorderBrush="Black">
                         <StackPanel>
                             <Label Content="{Binding Name}" ></Label>
-                            <Label Content="{Binding team}" ></Label>
                             <Label Content="{Binding Points}" ></Label>
                         </StackPanel>
                     </Border>
@@ -29,8 +28,13 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
+            <Label Content="Name: " Background="LightBlue" FontSize="15"></Label>
+            <TextBox Text="{Binding SelectedDriver.Name}" FontSize="15" Margin="0,0,0,10"></TextBox>
+            <Label Content="Points: " Background="LightBlue" FontSize="15"></Label>
+            <TextBox Text="{Binding SelectedDriver.Points}" FontSize="15" Margin="0,0,0,10"></TextBox>
             <Button Content="Add Driver" Command="{Binding CreateDriverCommand}" Margin="10" Padding="10"></Button>
             <Button Content="Delete Driver" Command="{Binding DeleteDriverCommand}" Margin="10" Padding="10"></Button>
+            <Button Content="Update Driver" Command="{Binding UpdateDriverCommand}" Margin="10" Padding="10"></Button>
         </StackPanel>
     </Grid>
 </Window>

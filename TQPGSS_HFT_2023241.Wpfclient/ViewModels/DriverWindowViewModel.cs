@@ -19,6 +19,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
         public RestCollection<Driver> Drivers { get; set; }
 
 
+
         public ICommand CreateDriverCommand { get; set; }
         public ICommand DeleteDriverCommand { get; set; }
         public ICommand UpdateDriverCommand { get; set; }
@@ -48,6 +49,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 
         public DriverWindowViewModel()
         {
+            
             if (!IsInDesignMode)
             {
                 Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver");
@@ -56,11 +58,14 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                 {
                     Drivers.Add(new Driver()
                     {
-                        Name = "Kovacs Patrik"
+                        Name = SelectedDriver.Name,
+                        Points=SelectedDriver.Points
                     });
                 });
                 DeleteDriverCommand = new RelayCommand(() => Drivers.Delete(SelectedDriver.Id), () => { return selectedDriver != null; });
+                UpdateDriverCommand = new RelayCommand(() => Drivers.Update(SelectedDriver));
             }
+            SelectedDriver=new Driver();
         }
     }
 }

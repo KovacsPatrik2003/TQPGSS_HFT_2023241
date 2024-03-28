@@ -47,15 +47,21 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
             {
                 Teams = new RestCollection<Team>("http://localhost:18928/", "team");
 
-                CreateTeamCommand = new RelayCommand(() => Teams.Add(new Team()
-                {
-                    Name = "Suzuki",
-                    Points = 0
-                }));
-                DeleteTeamCommand = new RelayCommand(() => Teams.Delete(selectedTeam.Id), () => { return selectedTeam != null; });
-            }
+                CreateTeamCommand = new RelayCommand(() => {
+                    
+                    Teams.Add(new Team()
+                    {
+                        Name = SelectedTeam.Name,
+                        Points = SelectedTeam.Points,
+                        Principal = SelectedTeam.Principal
+                    });
+                });
+                DeleteTeamCommand = new RelayCommand(() => Teams.Delete(SelectedTeam.Id), () => { return selectedTeam != null; });
 
-		}
+                UpdateTeamCommand = new RelayCommand(() => Teams.Update(SelectedTeam));
+            }
+            SelectedTeam = new Team();
+        }
 
 	}
 }
