@@ -23,6 +23,11 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
         public ICommand CreateTeamCommand { get; set; }
         public ICommand DeleteTeamCommand { get; set; }
         public ICommand UpdateTeamCommand { get; set; }
+        public ICommand TeamsDriversTeamCommand { get; set; }
+        public ICommand AvargePointsPerGrandPrixTeamCommand { get; set; }
+        public ICommand FirstAndSecondDriverTeamCommand { get; set; }
+        public ICommand VisszaTeamCommand { get; set; }
+
 
         public Team SelectedTeam
 		{
