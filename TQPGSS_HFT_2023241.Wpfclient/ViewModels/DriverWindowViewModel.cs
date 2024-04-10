@@ -17,7 +17,6 @@ using TQPGSS_HFT_2023241.Models;
 
 namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 {
-    class MainClass { }
     public class AvaragePointClass : ObservableObject
     {
         public double Points { get; set; }

@@ -39,10 +39,10 @@
             <Button Content="Add Team" Command="{Binding CreateTeamCommand}" Margin="10" Padding="10"></Button>
             <Button Content="Delete Team" Command="{Binding DeleteTeamCommand}" Margin="10" Padding="10"></Button>
             <Button Content="Update Team" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
-            <Button Content="Teams Drivers" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
-            <Button Content="Avarage point per grand prixes" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
-            <Button Content="First and second driver by points" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
-            <Button Background="IndianRed" Content="Listázások törlése" Command="{Binding UpdateTeamCommand}" Margin="10" Padding="10"></Button>
+            <Button Content="Teams Drivers" Command="{Binding TeamsDriversTeamCommand}" Margin="10" Padding="10"></Button>
+            <Button Content="Avarage point per grand prixes" Command="{Binding AvargePointsPerGrandPrixTeamCommand}" Margin="10" Padding="10"></Button>
+            <Button Content="First and second driver by points" Command="{Binding FirstAndSecondDriverTeamCommand}" Margin="10" Padding="10"></Button>
+            <Button Background="IndianRed" Content="Listázások törlése" Command="{Binding VisszaTeamCommand}" Margin="10" Padding="10"></Button>
         </StackPanel>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -50,24 +50,32 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" ItemsSource="{Binding NonCrudListWins}" HorizontalContentAlignment="Stretch">
+            <ListBox Grid.Row="0" ItemsSource="{Binding TeamsDriversNonCrud}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Circuits}"></Label>
+                        <Label Content="{Binding Names}"></Label>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Grid.Row="1" ItemsSource="{Binding NonCrudListAvg}" HorizontalContentAlignment="Stretch">
+            <ListBox Grid.Row="1" ItemsSource="{Binding AvaragesPointsNonCrud}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Points}"></Label>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Grid.Row="2" ItemsSource="{Binding NonCrudListMostwins}" HorizontalContentAlignment="Stretch">
+            <ListBox Grid.Row="2" ItemsSource="{Binding FirstAndSecondNonCrud}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Name}"></Label>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <StackPanel>
+                                <Label Content="{Binding name}"></Label>
+                                <Label Content="{Binding driver1}"></Label>
+                                <Label Content="{Binding driver1Points}"></Label>
+                                <Label Content="{Binding driver2}"></Label>
+                                <Label Content="{Binding driver2Points}"></Label>
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
