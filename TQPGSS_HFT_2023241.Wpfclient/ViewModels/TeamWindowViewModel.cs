@@ -25,6 +25,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
     public class AvaragePointTeamClass
     {
         public double Points { get; set; }
+        public string TeamName { get; set; }
     }
     public class FirstAndSecondClass
     {
@@ -35,11 +36,14 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
         public int driver2Points { get; set; }
         public int first { get; set; }
         public int second { get; set; }
+        public string driver1name { get; set; }
+        public string driver2name { get; set; }
 
     }
     public class TeamWindowViewModel : ObservableRecipient
     {
         public RestCollection<Team> Teams { get; set; }
+        public RestCollection<Driver> Drivers { get; set; }
         public RestService NonCrud { get; set; }
         public ObservableCollection<TeamsDriverClass> TeamsDriversNonCrud { get; set; }
         public ObservableCollection<AvaragePointTeamClass> AvaragesPointsNonCrud { get; set; }
@@ -91,14 +95,16 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
 		{
             if (!IsInDesignMode)
             {
+                
                 Teams = new RestCollection<Team>("http://localhost:18928/", "team", "hub");
+                Drivers = new RestCollection<Driver>("http://localhost:18928/", "driver", "hub");
                 NonCrud = new RestService("http://localhost:18928/");
                 TeamsDriversNonCrud = new ObservableCollection<TeamsDriverClass>();
                 AvaragesPointsNonCrud = new ObservableCollection<AvaragePointTeamClass>();
                 FirstAndSecondNonCrud = new ObservableCollection<FirstAndSecondClass>();
 
                 CreateTeamCommand = new RelayCommand(() => {
-                    
+
                     Teams.Add(new Team()
                     {
                         Name = SelectedTeam.Name,
@@ -106,8 +112,8 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         Principal = SelectedTeam.Principal
                     });
                 });
-                DeleteTeamCommand = new RelayCommand(() => Teams.Delete(SelectedTeam.Id), () => { return selectedTeam != null; });
-
+                DeleteTeamCommand = new RelayCommand( () => {Teams.Delete(SelectedTeam.Id); }, () => { return SelectedTeam != null; });
+                SelectedTeam = new Team();
                 UpdateTeamCommand = new RelayCommand(() => Teams.Update(SelectedTeam));
 
                 TeamsDriversTeamCommand = new RelayCommand(
@@ -120,17 +126,25 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                             firstAndSecondClass.Names = item;
                             TeamsDriversNonCrud.Add(firstAndSecondClass);
                         }
-                    }
+                    }, () => { return SelectedTeam != null; }
                     );
                 AvargePointsPerGrandPrixTeamCommand = new RelayCommand(
                     () =>
                     {
                         var a = NonCrud.Get<double>("TeamStat/AvaragePointsPerGrandPrixByTeams");
+                        List<string> list = new List<string>();
+                        foreach (var item in Teams)
+                        {
+                            list.Add(item.Name);
+                        }
+                        int i = 0;
                         foreach (var item in a)
                         {
                             AvaragePointTeamClass avaragePointClass = new AvaragePointTeamClass();
                             avaragePointClass.Points = item;
+                            avaragePointClass.TeamName = list[i];
                             AvaragesPointsNonCrud.Add(avaragePointClass);
+                            i++;
                         }
                     }
                     );
@@ -145,15 +159,57 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         {
                             name.Add(item.Name);
                         }
-                        
+                        List<Driver> drivers = new List<Driver>();
+                        foreach (var item in Drivers)
+                        {
+                            drivers.Add(item);
+                        }
                         foreach (var item in name)
                         {
                             FirstAndSecondClass f = new FirstAndSecondClass();
                             f = a[i];
                             f.name = item;
-                            FirstAndSecondNonCrud.Add(f);
+                            int j = 0;
+                            bool find1 = false;
+                            bool find2 = false;
+                            while (j<drivers.Count() && (!find1 || !find2))
+                            {
+                                if (f.driver1 == drivers[j].Id)
+                                {
+                                    f.driver1name = drivers[j].Name;
+                                    find1 = true;
+                                }
+                                if (f.driver2== drivers[j].Id)
+                                {
+                                    f.driver2name = drivers[j].Name;
+                                    find2=true;
+                                }
+                                j++;
+                            }
+                            if (f.driver1Points < f.driver2Points)
+                            {
+                                ;
+                                FirstAndSecondClass seged = new FirstAndSecondClass();
+                                seged = f;
+                                int p1 = f.driver1Points;
+                                int p2 = f.driver2Points;
+                                string n1=f.driver1name;
+                                string n2 = f.driver2name;
+                                seged.driver1Points = p2;
+                                seged.driver1name = n2;
+                                seged.driver2Points = p1;
+                                seged.driver2name = n1;
+
+                                FirstAndSecondNonCrud.Add(seged);
+                            }
+                            else
+                            {
+                                FirstAndSecondNonCrud.Add(f);
+                            }
+
                             i++;
                         }
+                        
                         
                     }
                     );
@@ -174,8 +230,10 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         }
                     }
                     );
+                
             }
             SelectedTeam = new Team();
+
         }
 
 	}

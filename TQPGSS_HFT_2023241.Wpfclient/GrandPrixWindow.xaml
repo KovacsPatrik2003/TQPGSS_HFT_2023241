@@ -48,25 +48,32 @@
                 <RowDefinition Height="1*"/>
 
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" ItemsSource="{Binding WinnerNonCrud}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding Name}"></Label>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Grid.Row="1" ItemsSource="{Binding CircuitNonCrud}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <Label Content="{Binding id}"></Label>
-                            <Label Content="{Binding name}"></Label>
-                            <Label Content="{Binding date}"></Label>
-                            <Label Content="{Binding winner}"></Label>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <StackPanel Grid.Row="0">
+                <Label Content="Winner of the circuit" FontSize="15" Background="DarkSeaGreen"></Label>
+                <ListBox ItemsSource="{Binding WinnerNonCrud}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}"></Label>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label Content="Grand prix details" FontSize="15" Background="DarkSeaGreen"></Label>
+                <ListBox ItemsSource="{Binding CircuitNonCrud}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label Content="{Binding id}"></Label>
+                                <Label Content="{Binding name}"></Label>
+                                <Label Content="{Binding date}"></Label>
+                                <Label Content="{Binding winner}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            
         </Grid>
     </Grid>
 </Window>

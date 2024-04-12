@@ -50,35 +50,65 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" ItemsSource="{Binding TeamsDriversNonCrud}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding Names}"></Label>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Grid.Row="1" ItemsSource="{Binding AvaragesPointsNonCrud}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Label Content="{Binding Points}"></Label>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Grid.Row="2" ItemsSource="{Binding FirstAndSecondNonCrud}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <StackPanel>
-                                <Label Content="{Binding name}"></Label>
-                                <Label Content="{Binding driver1}"></Label>
-                                <Label Content="{Binding driver1Points}"></Label>
-                                <Label Content="{Binding driver2}"></Label>
-                                <Label Content="{Binding driver2Points}"></Label>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Teams Drivers:" FontSize="15" Background="DarkSeaGreen"></Label>
+                <ListBox Grid.Row="1" ItemsSource="{Binding TeamsDriversNonCrud}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Names}"></Label>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Avarage points per teams:" FontSize="15" Background="DarkSeaGreen"></Label>
+                <ListBox Grid.Row="1" ItemsSource="{Binding AvaragesPointsNonCrud}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <StackPanel>
+                                    <Label Content="{Binding TeamName}"></Label>
+                                    <Label Content="{Binding Points}"></Label>
+                                </StackPanel>
+                            </Border>
+                           
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="First and second drivers by points:" FontSize="15" Background="DarkSeaGreen"></Label>
+                <ListBox Grid.Row="1" ItemsSource="{Binding FirstAndSecondNonCrud}" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <StackPanel>
+                                    <Label Content="{Binding name}"></Label>
+                                    <Label Content="{Binding driver1name}" ContentStringFormat="First: {0}"></Label>
+                                    <Label Content="{Binding driver1Points}"></Label>
+                                    <Label Content="{Binding driver2name}" ContentStringFormat="Second: {0}"></Label>
+                                    <Label Content="{Binding driver2Points}"></Label>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            
         </Grid>
     </Grid>
 </Window>

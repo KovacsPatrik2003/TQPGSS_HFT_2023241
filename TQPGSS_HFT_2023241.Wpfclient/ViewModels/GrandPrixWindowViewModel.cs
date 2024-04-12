@@ -95,7 +95,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                     });
                 });
 
-                DeleteGrandPrixCommand = new RelayCommand(() => GrandPrixs.Delete(SelectedGrandPrix.Id), () => { return selectedGrandPrix != null; });
+                DeleteGrandPrixCommand = new RelayCommand(() => GrandPrixs.Delete(SelectedGrandPrix.Id), () => { return SelectedGrandPrix != null; });
 
                 UpdateGrandPrixCommand = new RelayCommand(() => GrandPrixs.Update(SelectedGrandPrix));
             }
@@ -104,13 +104,14 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                 () =>
                 {
                     var a = NonCrud.Get<string>($"GrandPrixStat/WinnerOfTheCircuit/{SelectedGrandPrix.Name}");
+                    
                     foreach (var item in a)
                     {
                         WinnerClass winner = new WinnerClass();
                         winner.Name = item;
                         WinnerNonCrud.Add(winner);
                     }
-                }
+                }, () => { return SelectedGrandPrix != null; }
                 );
             CircuitDetalisCommand = new RelayCommand(
                 () =>
@@ -121,7 +122,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                        
                         CircuitNonCrud.Add(item);
                     }
-                }
+                }, () => { return SelectedGrandPrix != null; }
                 );
             VisszaCommand = new RelayCommand(
                 () =>

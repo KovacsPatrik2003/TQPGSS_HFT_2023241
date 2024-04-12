@@ -20,6 +20,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
     public class AvaragePointClass : ObservableObject
     {
         public double Points { get; set; }
+        public string Name { get; set; }
 
     }
     public class DriverWinsClass : ObservableObject
@@ -99,17 +100,26 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         Points=SelectedDriver.Points
                     });
                 });
-                DeleteDriverCommand = new RelayCommand(() => Drivers.Delete(SelectedDriver.Id), () => { return selectedDriver != null; });
+                DeleteDriverCommand = new RelayCommand(() => Drivers.Delete(SelectedDriver.Id), () => { return SelectedDriver != null; });
                 UpdateDriverCommand = new RelayCommand(() => Drivers.Update(SelectedDriver));
                 AvaragePointsPerGrandPrixesDriverCommand = new RelayCommand(
                     () => {
                         var a  = DriversNonCrud.Get<double>("DriverStat/AvaragePointPerGrandPrixByDrivers");
+                        List<string> list = new List<string>();
+                        foreach (var driver in Drivers)
+                        {
+                            list.Add(driver.Name);
+                        }
+                        int i = 0;
                         foreach (var item in a)
                         {
                             AvaragePointClass avg = new AvaragePointClass();
                             avg.Points = item;
+                            avg.Name = list[i];
                             NonCrudListAvg.Add(avg);
+                            i++;
                         }
+                        
                         }
                     );
                 DriverWinsCommand = new RelayCommand(
@@ -124,7 +134,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                             wins.Circuits = item;
                             NonCrudListWins.Add(wins);
                         }
-                    }
+                    }, () => { return SelectedDriver != null; }
                     );
                 VisszaCommand = new RelayCommand(
                     () =>
@@ -148,6 +158,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                     () =>
                     {
                         var a = DriversNonCrud.Get<string>("DriverStat/WhoWonTheMost");
+                        
                         foreach (var item in a)
                         {
                             MostWinsClass wins = new MostWinsClass();
