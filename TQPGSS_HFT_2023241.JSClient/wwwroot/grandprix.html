@@ -2,9 +2,45 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Grand Prix oldal</title>
+    <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>Grand Prix Cataloge</h1>
+    <div id="formdiv">
+        <label>Grand Prix name</label>
+        <input type="text" id="grandPrixName" />
+        <label>Date</label>
+        <input type="text" id="Date" />
+        <label>Winner</label>
+        <input type="text" id="Winner" />
+        <button onclick="create()" type="button">Add Driver</button>
+    </div>
 
+    <div id="updateformdiv">
+        <label>Grand Prix name</label>
+        <input type="text" id="grandPrixNametoupdate" />
+        <label>Date</label>
+        <input type="text" id="Datetoupdate" />
+        <label>Winner</label>
+        <input type="text" id="Winnertoupdate" />
+        <button onclick="update()" type="button">Update Driver</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Who won</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="grandPrixResultArea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="scriptGrandPrix.js"></script>
 </body>
 </html>

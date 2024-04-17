@@ -230,9 +230,10 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         }
                     }
                     );
-                
+                SelectedTeam = new Team();
+
             }
-            SelectedTeam = new Team();
+            
 
         }
 

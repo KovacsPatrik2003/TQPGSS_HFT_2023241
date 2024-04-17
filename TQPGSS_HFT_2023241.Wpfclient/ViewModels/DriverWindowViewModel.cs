@@ -94,6 +94,7 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                 NonCrudListMostwins = new ObservableCollection<MostWinsClass>();
                 CreateDriverCommand = new RelayCommand(() =>
                 {
+                    
                     Drivers.Add(new Driver()
                     {
                         Name = SelectedDriver.Name,
@@ -167,8 +168,9 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                         }
                     }
                     );
+                SelectedDriver = new Driver();
             }
-            SelectedDriver=new Driver();
+            
         }
     }
 }

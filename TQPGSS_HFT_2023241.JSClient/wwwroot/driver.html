@@ -16,6 +16,14 @@
         <button onclick="create()" type="button">Add Driver</button>
     </div>
 
+    <div id="updateformdiv">
+        <label>Driver name</label>
+        <input type="text" id="driverNametoupdate" />
+        <label>Driver points</label>
+        <input type="text" id="driverPointstoupdate" />
+        <button onclick="update()" type="button">Update Driver</button>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -23,15 +31,15 @@
                 <th>Name</th>
                 <th>Age</th>
                 <th>Points</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody id="driverResultArea">
-
         </tbody>
     </table>
 
 
-
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="scriptDriver.js"></script>
 </body>
 </html>

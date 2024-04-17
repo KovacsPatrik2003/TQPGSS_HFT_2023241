@@ -98,13 +98,12 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                 DeleteGrandPrixCommand = new RelayCommand(() => GrandPrixs.Delete(SelectedGrandPrix.Id), () => { return SelectedGrandPrix != null; });
 
                 UpdateGrandPrixCommand = new RelayCommand(() => GrandPrixs.Update(SelectedGrandPrix));
-            }
-            SelectedGrandPrix = new GrandPrix();
-            WinnerOfTheCircuitCommand = new RelayCommand(
+
+                WinnerOfTheCircuitCommand = new RelayCommand(
                 () =>
                 {
                     var a = NonCrud.Get<string>($"GrandPrixStat/WinnerOfTheCircuit/{SelectedGrandPrix.Name}");
-                    
+
                     foreach (var item in a)
                     {
                         WinnerClass winner = new WinnerClass();
@@ -113,30 +112,34 @@ namespace TQPGSS_HFT_2023241.Wpfclient.ViewModels
                     }
                 }, () => { return SelectedGrandPrix != null; }
                 );
-            CircuitDetalisCommand = new RelayCommand(
-                () =>
-                {
-                    var a = NonCrud.Get<CircuitClass>($"GrandPrixStat/GrandPrixDetails/{SelectedGrandPrix.Name}");
-                    foreach (var item in a)
+                CircuitDetalisCommand = new RelayCommand(
+                    () =>
                     {
-                       
-                        CircuitNonCrud.Add(item);
-                    }
-                }, () => { return SelectedGrandPrix != null; }
-                );
-            VisszaCommand = new RelayCommand(
-                () =>
-                {
-                    while (WinnerNonCrud.Count() != 0)
+                        var a = NonCrud.Get<CircuitClass>($"GrandPrixStat/GrandPrixDetails/{SelectedGrandPrix.Name}");
+                        foreach (var item in a)
+                        {
+
+                            CircuitNonCrud.Add(item);
+                        }
+                    }, () => { return SelectedGrandPrix != null; }
+                    );
+                VisszaCommand = new RelayCommand(
+                    () =>
                     {
-                        WinnerNonCrud.Remove(WinnerNonCrud[0]);
+                        while (WinnerNonCrud.Count() != 0)
+                        {
+                            WinnerNonCrud.Remove(WinnerNonCrud[0]);
+                        }
+                        while (CircuitNonCrud.Count() != 0)
+                        {
+                            CircuitNonCrud.Remove(CircuitNonCrud[0]);
+                        }
                     }
-                    while (CircuitNonCrud.Count() != 0)
-                    {
-                        CircuitNonCrud.Remove(CircuitNonCrud[0]);
-                    }
-                }
-                );
+                    );
+                SelectedGrandPrix = new GrandPrix();
+            }
+            
+            
         }
 
     }
