@@ -51,3 +51,12 @@ th {
 table button {
     padding: 2px;
 }
+#nonCrud {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#removeButton {
+    background-color: red;
+}

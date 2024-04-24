@@ -1,6 +1,7 @@
 ﻿let drivers = [];
 let connection = null;
 let driverIdToUpdate = -1;
+let mostWinsResult = [];
 getdata();
 setupSignalR();
 
@@ -40,11 +41,12 @@ async function start() {
 };
 
 async function getdata() {
+    
     await fetch("http://localhost:18928/driver")
         .then(x => x.json())
         .then(y => {
             drivers = y;
-            console.log(drivers);
+            //console.log(drivers);
             display();
         });
 }
@@ -57,8 +59,9 @@ function display() {
         + `<button type="button" onclick="remove(${t.id})">Delete</button>`
         + `<button type="button" onclick="showupdate(${t.id})">Update</button>`
             + " </td></tr>";
-        console.log(t.name);
+        //console.log(t.name);
     });
+    
 }
 
 function create() {
@@ -89,8 +92,10 @@ function remove(id){
         .then(data => {
             console.log('Success:', data);
             getdata();
+            
         })
         .catch((error) => { console.error('Error:', error); });
+
 }
 
 
@@ -118,3 +123,59 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
+//noncrud resz **************************
+
+function removeNonCrudResult() {
+    document.getElementById('resultId').innerHTML = '';
+}
+
+function getResultMostWins() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/DriverStat/WhoWonTheMost')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+function getResultDriverWins() {
+    document.getElementById('resultId').innerHTML = '';
+    //let driverNameNonCrud = document.getElementById('driverName').value;
+    
+    fetch('http://localhost:18928/DriverStat/DriverWins/Sergio%20Perez')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+
+
+function getResultAvaragePoints() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/DriverStat/AvaragePointPerGrandPrixByDrivers')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+
+
+
