@@ -124,3 +124,39 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
+//noncrud resz ****************
+
+
+function removeNonCrudResult() {
+    document.getElementById('resultId').innerHTML = '';
+}
+
+function getResultWinner() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/GrandPrixStat/WinnerOfTheCircuit/BahRain')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+function getResultDetails() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/GrandPrixStat/GrandPrixDetails/BahRain')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}

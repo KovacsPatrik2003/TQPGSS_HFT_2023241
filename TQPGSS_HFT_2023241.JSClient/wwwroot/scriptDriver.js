@@ -146,8 +146,8 @@ function getResultMostWins() {
 }
 function getResultDriverWins() {
     document.getElementById('resultId').innerHTML = '';
-    //let driverNameNonCrud = document.getElementById('driverName').value;
-    
+    const alma = document.getElementById('driverName').value;
+    console.log(alma);
     fetch('http://localhost:18928/DriverStat/DriverWins/Sergio%20Perez')
         .then(response => response.text())
         .then(data => {

@@ -128,3 +128,56 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
+
+//noncrud resz *****************
+
+function removeNonCrudResult() {
+    document.getElementById('resultId').innerHTML = '';
+}
+
+function getResultTeamsDrivers() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/TeamStat/TeamsDrivers/Ferrari')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+
+function getResultTeamsAVGPoints() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/TeamStat/AvaragePointsPerGrandPrixByTeams')
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
+
+
+function getResultTeamsFirstSecond() {
+    document.getElementById('resultId').innerHTML = '';
+    fetch('http://localhost:18928/TeamStat/FirstAndSecondDriverByPoints') 
+        .then(response => response.text())
+        .then(data => {
+            const resultDiv = document.getElementById('resultId');
+            resultDiv.innerHTML = `<p>${data}</p>`;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
+        });
+}
