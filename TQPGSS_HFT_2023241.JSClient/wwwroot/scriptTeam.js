@@ -58,6 +58,7 @@ function display() {
             "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.principal + "</td><td>" + t.points + "</td><td>"
         + `<button type="button" onclick="remove(${t.id})">Delete</button>`
         + `<button type="button" onclick="showupdate(${t.id})">Update</button>`
+        + `<button type="button" onclick="getResultTeamsDrivers(${t.id})">Teams Drivers</button>`
             + " </td></tr>";
         console.log(t.name);
     });
@@ -136,9 +137,11 @@ function removeNonCrudResult() {
     document.getElementById('resultId').innerHTML = '';
 }
 
-function getResultTeamsDrivers() {
+function getResultTeamsDrivers(id) {
     document.getElementById('resultId').innerHTML = '';
-    fetch('http://localhost:18928/TeamStat/TeamsDrivers/Ferrari')
+    const help_name = teams.find(t => t['id'] == id)['name'];
+    const newname = help_name.replace(" ", "%20")
+    fetch('http://localhost:18928/TeamStat/TeamsDrivers/'+newname)
         .then(response => response.text())
         .then(data => {
             const resultDiv = document.getElementById('resultId');

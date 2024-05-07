@@ -58,6 +58,7 @@ function display() {
             "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td>" + t.points + "</td><td>"
         + `<button type="button" onclick="remove(${t.id})">Delete</button>`
         + `<button type="button" onclick="showupdate(${t.id})">Update</button>`
+        + `<button type="button" onclick="getResultDriverWins(${t.id})">Driver Wins</button>`
             + " </td></tr>";
         //console.log(t.name);
     });
@@ -144,11 +145,12 @@ function getResultMostWins() {
             resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
         });
 }
-function getResultDriverWins() {
+function getResultDriverWins(id) {
     document.getElementById('resultId').innerHTML = '';
-    const alma = document.getElementById('driverName').value;
-    console.log(alma);
-    fetch('http://localhost:18928/DriverStat/DriverWins/Sergio%20Perez')
+    const help_name = drivers.find(t => t['id'] == id)['name'];
+    const newname=help_name.replace(" ", "%20")
+    console.log(newname);
+    fetch('http://localhost:18928/DriverStat/DriverWins/' + newname)
         .then(response => response.text())
         .then(data => {
             const resultDiv = document.getElementById('resultId');

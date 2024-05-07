@@ -55,8 +55,10 @@ function display() {
             "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.date + "</td><td>" + t.whoWon + "</td><td>"
         + `<button type="button" onclick="remove(${t.id})">Delete</button>`
         + `<button type="button" onclick="showupdate(${t.id})">Update</button>`
+        + `<button type="button" onclick="getResultWinner(${t.id})">Winner</button>`
+        + `<button type="button" onclick="getResultDetails(${t.id})">Details</button>`
             + " </td></tr>";
-        console.log(t.name);
+        //console.log(t.name);
     });
 }
 
@@ -132,9 +134,11 @@ function removeNonCrudResult() {
     document.getElementById('resultId').innerHTML = '';
 }
 
-function getResultWinner() {
+function getResultWinner(id) {
     document.getElementById('resultId').innerHTML = '';
-    fetch('http://localhost:18928/GrandPrixStat/WinnerOfTheCircuit/BahRain')
+    const help_name = grandprixs.find(t => t['id'] == id)['name'];
+    const newname = help_name.replace(" ", "%20")
+    fetch('http://localhost:18928/GrandPrixStat/WinnerOfTheCircuit/'+newname)
         .then(response => response.text())
         .then(data => {
             const resultDiv = document.getElementById('resultId');
@@ -146,9 +150,11 @@ function getResultWinner() {
             resultDiv.innerHTML = '<p>An error occurred while fetching data</p>';
         });
 }
-function getResultDetails() {
+function getResultDetails(id) {
     document.getElementById('resultId').innerHTML = '';
-    fetch('http://localhost:18928/GrandPrixStat/GrandPrixDetails/BahRain')
+    const help_name = grandprixs.find(t => t['id'] == id)['name'];
+    const newname = help_name.replace(" ", "%20")
+    fetch('http://localhost:18928/GrandPrixStat/GrandPrixDetails/'+newname)
         .then(response => response.text())
         .then(data => {
             const resultDiv = document.getElementById('resultId');
